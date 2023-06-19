@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 ascii_chars = " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@"
-ascii_chars = ["@" , "#" , "$" , "%" , "^" , "&" , "*" , ";" , ":" , "," , " " , "+" , "="]
+ascii_chars = [" " , "#" , "$" , "%" , "'" , "." , "*" , ";" , ":" , "," , "," , "+" , "0"]
 
 def resize(image):
     return image.resize((120 , 40))
@@ -14,7 +14,7 @@ def generate_ascii(image):
     pixels = image.getdata()
     ascii_data=""
     for pixel in pixels:
-        ascii_data += ascii_chars[pixel//25]
+        ascii_data += ascii_chars[pixel//20]
     return ascii_data
 
 def write(frame_dir , ascii_dir):
@@ -31,6 +31,7 @@ def write(frame_dir , ascii_dir):
         img = ""
         for j in range(0 , len(ascii_data) , width):
             img += ascii_data[j:j+width]+"\n"
+
 
         with open(target_path , "w") as f:
             f.write(img)
