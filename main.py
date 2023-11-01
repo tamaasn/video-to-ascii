@@ -24,7 +24,7 @@ if (command == "make"):
         write_ascii.write(frame_directory , save_directory)
 
 #Run video
-if (command == "run"):
+elif (command == "run"):
     ascii_directory = input("ASCII files directory : ")
     sound_file = input("music file (if you dont want to add music just press enter)")
     thread = threading.Thread(target=sound.play, args=(sound_file,))
